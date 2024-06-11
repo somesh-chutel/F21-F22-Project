@@ -1,0 +1,17 @@
+.my-form-cont{
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+}
+.my-form{
+
+    padding: 20px;
+    background-color: rgb(49, 47, 47);
+    color: white;
+}
