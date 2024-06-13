@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import Jobs from "../jobs";
 import "./index.css";
@@ -11,6 +12,12 @@ const Login = () => {
     showErrorMsg : false,
     errorMsg : ""
   })
+
+  const token = Cookies.get("jwtToken");
+
+  const navigate = useNavigate();
+
+  
     
     const onSubmitUserDetails = async (e) =>{
         e.preventDefault();
@@ -40,6 +47,8 @@ const Login = () => {
 
         Cookies.set("jwtToken", fetchData.jwt_token);
 
+        navigate("/");
+
         }
         else{
 
@@ -61,7 +70,16 @@ const Login = () => {
 
     }
 
+    useEffect(()=>{
 
+      if( token !== undefined ){
+
+        navigate("/");
+
+      }
+
+
+    },[])
 
   return (
     <div className="my-form-cont">
