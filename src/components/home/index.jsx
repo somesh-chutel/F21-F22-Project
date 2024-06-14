@@ -1,39 +1,25 @@
-import { useEffect } from 'react';
-import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Header from '../header';
 import './index.css'
 
 
-const Home = ()=>{
+const Home = ()=>(
 
-    const token = Cookies.get("jwtToken");
+    <div className='home-cont'>
+        <Header/>
+        <div className='home-content-cont'>
+            <h1 className='home-heading'>Find The Job That Fits Your Life</h1>
+            <p>Millions of people are searching for jobs, sallry, information, company reviews.
+                Find the jobs that firts your ability and your potential</p>
+            <Link to = "/jobs">
+            <button className='btn btn-primary home-btn'>Find Jobs</button>
+            </Link>
 
-    const navigate = useNavigate();
+        </div>
 
-    console.log(token);
+    </div>
+)
 
-    useEffect(()=>{
-
-        if( token === undefined ){
-  
-          navigate("/login");
-  
-        }
-  
-  
-      },[])
-
-
-    return(
-
-        <>
-
-                <h1> Home Section </h1>
-        
-        </>
-
-    )
-}
 
 
 
