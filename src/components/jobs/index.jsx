@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import Header from '../header';
+import DisplayAllJobs from '../displayAllJobs';
+import FilterSection from '../filterSection';
 import './index.css'
 
 // {
@@ -15,9 +17,18 @@ import './index.css'
 //   }
 
 
+
+
 const Jobs = ()=>{
 
     const token = Cookies.get("jwtToken");
+
+    const [allValues,setValues] = useState({
+
+        jobsList : []
+
+    });
+
 
     useEffect(()=>{
 
@@ -36,7 +47,11 @@ const Jobs = ()=>{
 
             const fetchData = await response.json();
 
-            console.log(fetchData.jobs);
+            if(response.ok === true){
+
+                setValues({...allValues,jobsList : fetchData.jobs})
+
+            }
 
         }
 
@@ -58,7 +73,26 @@ const Jobs = ()=>{
 
             </div>
 
-                <h1> Jobs Section </h1>
+            <div className='filter-alljobs-container'>
+
+                <div className='filter-section-cont'>
+                    <FilterSection/>
+                </div>
+
+                <div className='all-jobs-cont'>
+
+                    <ul>
+                        {
+                            allValues.jobsList.map( each => <DisplayAllJobs key={each.id} jobsItem = {each}/>)
+                        }
+
+                    </ul>
+
+                    
+
+                </div>
+
+            </div>
         
         </>
 
