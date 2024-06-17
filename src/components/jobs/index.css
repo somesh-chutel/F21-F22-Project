@@ -1,15 +1,17 @@
 .filter-alljobs-container{
     width: 100%;
-    height: 100vh;
     display: flex;
+    background-color: black;
+    padding: 15px;
 
 }
 .filter-section-cont{
     width: 35%;
-    border: 1px solid red;
 
 }
 .all-jobs-cont{
     width: 65%;
-    border: 1px solid rgb(7, 223, 79);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
