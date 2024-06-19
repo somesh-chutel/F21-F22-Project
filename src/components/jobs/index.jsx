@@ -28,6 +28,7 @@ const Jobs = () => {
 
   useEffect(() => {
     const fetchJobsData = async () => {
+
       const api = `https://apis.ccbp.in/jobs?employment_type=${allValues.empType}&minimum_package=${allValues.sllryRange}&search=${allValues.searchInput}`;
 
       const options = {
@@ -47,7 +48,7 @@ const Jobs = () => {
     };
 
     fetchJobsData();
-  }, [allValues.searchInput]);
+  }, [allValues.searchInput,allValues.empType]);
 
   const onChangeUserIn = (e) => {
 
@@ -59,9 +60,21 @@ const Jobs = () => {
   };
 
 
-  const onChangeempType = (value)=>{
+  const onChangeempType = (value,isCheked)=>{
 
-    console.log(value);
+    if(isCheked){
+
+      setValues({ ...allValues, empType: [...allValues.empType,value] });
+
+    }
+    else{
+
+      setValues({...allValues,empType : allValues.empType.filter(each => each !== value)});
+
+    }
+
+    
+
 
   }
 

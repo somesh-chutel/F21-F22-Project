@@ -65,7 +65,6 @@ const {empTypeChangeFunct} = props;
       }
       const response = await fetch(apiUrl, options)
       const data = await response.json()
-      console.log(data)
       if (response.ok === true) {
         setvalue({...allValues,profileDetails:data.profile_details})
       }
@@ -81,7 +80,8 @@ const {empTypeChangeFunct} = props;
 
     const onChangeEmpType = (e)=>{
 
-      empTypeChangeFunct(e.target.value);
+      empTypeChangeFunct(e.target.value,e.target.checked);
+
 
     }
     
